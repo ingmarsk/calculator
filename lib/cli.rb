@@ -16,7 +16,7 @@ class CLI
 
   private
 
-  def user_input(msg)
+  def self.user_input(msg:)
     puts msg
     gets.chomp
   end

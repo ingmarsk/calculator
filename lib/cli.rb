@@ -4,23 +4,21 @@ require_relative 'calculator'
 
 class CLI
   def self.start
-    loop do
-      puts 'Perform new addition? (Y/n)'  
-      break if gets.chomp != 'Y'
+    first_number = get_first_number_user_input
+    second_number = get_second_number_user_input
 
-      prompt_to_user
-    end
+    first_number + second_number
   end
 
   private
 
-  def prompt_to_user
+  def self.get_first_number_user_input
     puts 'First Number:'
-    first_number = gets.chomp.to_i
+    gets.chomp.to_i
+  end
 
+  def self.get_second_number_user_input
     puts 'Second Number:'
-    second_number = gets.chomp.to_i
-
-    puts "#{first_number} + #{second_number} = #{Calculator.sum(first_number, second_number)}"
+    gets.chomp.to_i
   end
 end

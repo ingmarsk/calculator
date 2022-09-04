@@ -10,7 +10,7 @@ RSpec.describe CLI do
       allow(subject).to receive(:get_first_number_user_input).and_return(1)
       allow(subject).to receive(:get_second_number_user_input).and_return(2)
 
-      expect(subject.start).to eq(3)
+      expect { subject.start }.to output("3\n").to_stdout
     end
   end
 end

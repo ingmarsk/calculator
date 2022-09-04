@@ -7,7 +7,7 @@ class CLI
     first_number = get_first_number_user_input
     second_number = get_second_number_user_input
 
-    first_number + second_number
+    puts Calculator.sum(first_number, second_number)
   end
 
   private

@@ -4,21 +4,34 @@ require_relative 'calculator'
 
 class CLI
   def self.start
-    first_number = get_first_number_user_input
-    second_number = get_second_number_user_input
+    first_number = user_input(msg: 'First Number:')
+    second_number = user_input(msg: 'Second Number:')
 
-    puts Calculator.sum(first_number, second_number)
+    if valid_values?(first_number, second_number)
+      puts Calculator.sum(first_number.to_i, second_number.to_i)
+    else
+      puts error_msg
+    end
   end
 
   private
 
-  def self.get_first_number_user_input
-    puts 'First Number:'
-    gets.chomp.to_i
+  def user_input(msg)
+    puts msg
+    gets.chomp
   end
 
-  def self.get_second_number_user_input
-    puts 'Second Number:'
-    gets.chomp.to_i
+  def self.valid_values?(x, y)
+    begin
+      Integer(x)
+      Integer(y)
+      true
+    rescue ArgumentError
+      false
+    end
+  end
+
+  def self.error_msg
+    "Invalid inputs, please make sure to enter integers"
   end
 end
